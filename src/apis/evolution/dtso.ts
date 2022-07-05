@@ -30,7 +30,7 @@ export interface EvolutionDetail{
   party_type: null;
 } 
 
-export interface Chains{
+export interface Chain{
   id: number; 
   species: Species;
   chain:{
