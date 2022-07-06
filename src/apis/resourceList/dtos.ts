@@ -1,18 +1,27 @@
 import { Pokemon } from "../pokemon/dtos";
-import { Sprites, Stat, Ability, Type, Name, FlavorTextEntry, Color, GrowthRate, EffectEntry, DamageRelation} from "../ditto/dtos";
+import {
+  Sprites,
+  Stat,
+  Ability,
+  Type,
+  Name,
+  FlavorTextEntry,
+  Color,
+  GrowthRate,
+  EffectEntry,
+  DamageRelation,
+} from "../ditto/dtos";
 import { Chain } from "../evolution/dtso";
 
-
-export interface ResourceList{
+export interface ResourceList {
   count: number;
   next: string;
   previous: null;
   results: Array<Pokemon>;
 }
 
-
 export interface PokemonResponse {
-  id: number;
+  id?: number;
   name: string;
   order: number;
   sprites: Sprites;
@@ -24,7 +33,7 @@ export interface PokemonResponse {
   types: Array<Type>;
 }
 
-export interface SpeciesResponse  {
+export interface SpeciesResponse {
   id: number;
   name: string;
   order: number;
@@ -37,7 +46,7 @@ export interface SpeciesResponse  {
   is_mythical: boolean;
   evolution_chain: {
     url: string;
-  }
+  };
 }
 
 export interface AbilityResponse {
@@ -48,9 +57,9 @@ export interface AbilityResponse {
   effect_entries: Array<EffectEntry>;
 }
 
-export interface TypeResponse{
-  id:number;
-  name:string;
+export interface TypeResponse {
+  id: number;
+  name: string;
   damage_relations: DamageRelation;
 }
 
