@@ -34,7 +34,7 @@ export interface PokemonResponse {
 }
 
 export interface SpeciesResponse {
-  id: number;
+  id?: number;
   name: string;
   order: number;
   names: Array<Name>;

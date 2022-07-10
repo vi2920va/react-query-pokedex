@@ -2,9 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { PokemonList as list } from "../../apis/pokemonList/dtos";
 import usePokemonQuery from "../../hooks/usePokemonQuery";
-import PokenmonItem from "../PokemonItem";
+import { formatNumbering } from "../../utils";
 import * as Styled from "./styles";
-
+const getImageUrl = (pokemonIndex: number): string =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIndex}.png`;
 const PokemonList: React.FC = () => {
   const { isLoading, isError, data } = usePokemonQuery<list>();
   const navigate = useNavigate();
@@ -16,7 +17,11 @@ const PokemonList: React.FC = () => {
       ) : (
         <Styled.List>
           {data?.data.results.map((pokemon, idx) => (
-            <PokenmonItem key={idx} idx={idx} pokemon={pokemon} onClick={()=> navigate(`/${idx + 1}`)} />
+            <Styled.ListItem key={idx} onClick={() => navigate(`/${idx + 1}`)}>
+              <Styled.Image src={getImageUrl(idx + 1)} alt={pokemon.name} />
+              <Styled.Name>{pokemon.name}</Styled.Name>
+              <Styled.Index>{formatNumbering(idx + 1)}</Styled.Index>
+            </Styled.ListItem>
           ))}
         </Styled.List>
       )}
