@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PokemonResponse } from "../../apis/resourceList/dtos";
 import PokemonInfo from "../../components/PokemonInfo";
+import Tabs from "../../components/Tabs";
 import usePokemonQuery from "../../hooks/usePokemonQuery";
 import useSpeciesQuery from "../../hooks/useSpecies";
 import * as Styled from "./styles";
@@ -30,7 +31,6 @@ const DetailPage: React.FC = () => {
     }),
     [pokemonQueryResult]
   );
-
   const {
     color,
     growthRate,
@@ -52,10 +52,15 @@ const DetailPage: React.FC = () => {
     }),
     [speciesQueryResult]
   );
-
+  const handleTabClick = (tab: Tab) => {
+    setSelectedTab(tab);
+  };
   return (
     <Styled.Container>
       <PokemonInfo id={id} name={name} types={types} color={color} />
+      <Styled.TabsWrapper>
+        <Tabs color={color} tab={selectedTab} onClick={handleTabClick} />
+      </Styled.TabsWrapper>
     </Styled.Container>
   );
 };
