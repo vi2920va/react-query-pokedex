@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PokemonResponse } from "../../apis/resourceList/dtos";
+import About from "../../components/About";
 import PokemonInfo from "../../components/PokemonInfo";
 import Tabs from "../../components/Tabs";
 import usePokemonQuery from "../../hooks/usePokemonQuery";
@@ -61,6 +62,24 @@ const DetailPage: React.FC = () => {
       <Styled.TabsWrapper>
         <Tabs color={color} tab={selectedTab} onClick={handleTabClick} />
       </Styled.TabsWrapper>
+      {selectedTab === "about" && (
+        <About
+          isLoading={
+            pokemonQueryResult.isLoading || speciesQueryResult.isLoading
+          }
+          color={color}
+          growthRate={growthRate}
+          flavorText={flavorText}
+          genderRate={genderRate}
+          isLegendary={isLegendary}
+          isMythical={isMythical}
+          types={types}
+          weight={weight}
+          height={height}
+          baseExp={baseExp}
+          // abilities={abilities}
+        />
+      )}
     </Styled.Container>
   );
 };

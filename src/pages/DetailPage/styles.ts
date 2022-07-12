@@ -6,3 +6,7 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.div``;
+
+export const TabsWrapper = styled.div`
+  margin: 24px auto 0;
+`;
